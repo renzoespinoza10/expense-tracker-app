@@ -1,0 +1,40 @@
+.popup-container{
+  width: auto;
+  border: 1px solid #fff;
+  border-radius: 0.8em;
+  background-color: #fff;
+  box-shadow: 0px 8px 15px rgb(0 0 0 / 15%);
+}
+
+.popup-title{
+  font-size: 1.2em;
+  text-align: center;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 1em;
+  font-weight: 600;
+}
+
+.body-container{
+  text-align: center;
+  padding: 0.1em 0.5em;
+}
+
+.item{
+  font-weight: bolder;
+  font-size: 1em;
+  color: red;
+}
+
+.gotIt{
+  display: block;
+  text-align: center;
+  margin: auto;
+  background-color: lightblue;
+  color: #fff;
+  border-radius: 0.8em;
+  border: 1px solid #fff;
+  box-shadow: 0px 8px 15px rgb(0 0 0 / 15%);
+  padding: 1em;
+  margin-bottom: 2em;
+  width: 30%;
+}
