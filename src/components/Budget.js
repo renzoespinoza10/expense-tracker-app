@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { GlobalContext} from '../context/GlobalState';
 
 
@@ -7,7 +7,7 @@ export const Budget = () => {
     const [amount, setAmount] = useState(0);
     const [budgetVal, setBudgetVal] = useState(0);
 
-    const { transactions } = useContext(GlobalContext);
+    const { transactions, addAmount } = useContext(GlobalContext);
     const amounts = transactions.map(transaction => transaction.amount);
     const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
     const remainingFunds = (budgetVal - (-total));
@@ -15,9 +15,15 @@ export const Budget = () => {
     const handleSubmit = e =>{
         e.preventDefault();
         setBudgetVal(amount);
-
-        //console.log(budgetVal);
     }
+
+    const addBudget= () =>{
+        addAmount(amount)
+    }
+
+    useEffect(() => {
+        amount > 0 && addBudget(amount)
+    }, [amount])
 
     return (
         <div>
