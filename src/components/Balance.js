@@ -9,10 +9,10 @@ export const Balance = () => {
     return (
         <div>
             <h4>
-            Remaining Spendings
+            Spendings
             </h4>
             <h1 style = {{color:"green"}}>
-            <em>${total}</em>
+            <em>${-total}</em>
             </h1>
         </div>
     )
