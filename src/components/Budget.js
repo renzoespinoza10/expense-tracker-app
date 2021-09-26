@@ -2,21 +2,29 @@ import React, {useState, useContext, useEffect} from 'react';
 import { GlobalContext} from '../context/GlobalState';
 
 
-
+/**
+*This component is responsible for keeping a set budget and displaying how much
+*of that budget is remaining based off of transactions.
+*/
 export const Budget = () => {
+    //keeps the set budget amount
     const [amount, setAmount] = useState(0);
     const [budgetVal, setBudgetVal] = useState(0);
 
     const { transactions, addAmount } = useContext(GlobalContext);
     const amounts = transactions.map(transaction => transaction.amount);
     const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+
+    //subtracts the total amount that has been listed by transactions from the budget
     const remainingFunds = (budgetVal - (-total));
 
+    // sets the budget amount
     const handleSubmit = e =>{
         e.preventDefault();
         setBudgetVal(amount);
     }
 
+    //adds the amount to budget
     const addBudget= () =>{
         addAmount(amount)
     }

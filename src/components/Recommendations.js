@@ -5,6 +5,13 @@ import { StyleSheet, css } from "aphrodite";
 import { GlobalContext } from '../context/GlobalState';
 
 import '../popup.css'
+
+
+/**
+*This component is responsible for suggesting a recommendation to reduce spendings
+*It will use a fade effect to bring up a message when a proportion of the budget is used
+*Will also recommend the product of most consumption to be reduced in spending.
+*/
 export const Recommendations = () => {
   const [visible, setVisible] = useState(false);
   const [fadeIn, setFadeIn] = useState(false)
@@ -25,15 +32,18 @@ export const Recommendations = () => {
 
   console.log(transactions, 'transactions')
 
+  //holds the remaining amount so that it can display it in the message
   const remaining = (amount) - (-total);
   useEffect(() => {
     console.log(remaining, amount, total, 'amount')
+    //threshold for dipslaying message
     if (remaining < (amount / 2)) {
       setFadeIn(true)
       setVisible(true)
     }
   }, [remaining, amount])
 
+  //finds the most expensive transaction so as to display it in message after
   useEffect(() => {
     let highExpense = 0
     let highItemName = ''
@@ -48,6 +58,7 @@ export const Recommendations = () => {
     })
     setHighExpenseName(highItemName)
   }, [transactions])
+  //creates fade effect when threshold met for the most expensive transaction
   const gotIt = () => {
     setFadeIn(false)
     setTimeout(() => {
